@@ -1,0 +1,18 @@
+{
+  "name": "twitter_be",
+  "version": "1.0.0",
+  "description": "- User should be able to create a post\r     - [Th post/tweet cannnot be created more than 250 chars]\r     - [Every post/tweet will be having support for image upload]",
+  "main": "index.js",
+  "scripts": {
+    "start":" nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.1",
+    "nodemon": "^2.0.22"
+  }
+}
