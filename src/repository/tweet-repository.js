@@ -1,4 +1,4 @@
-const Tweet = require('../models/tweet');
+import Tweet from'../models/tweet.js';
 
 
 class TweetRepository{
@@ -61,4 +61,4 @@ async getWithComments (id) {
 
 }
 
-module.exports = TweetRepository;
+export default TweetRepository;

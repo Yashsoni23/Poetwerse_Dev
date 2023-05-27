@@ -1,14 +1,11 @@
-const express = require('express');
+import express  from 'express';
 const app = express();
-const dotenv = require('dotenv').config();
-
-const connect = require('./config/database');
-
-const TweetRepository = require('./repository/tweet-repository');
-const Comment = require('./models/comment');
-// const CommentRepository = require('./repository/comment-repository');
-// const tweetRoutes = require('./routes/tweet-routes');
-// const commentRoutes = require('./routes/comment-routes');
+import dotenv  from 'dotenv';
+dotenv.config();
+import {connect}  from './config/database.js';
+import { HashtagRepository, TweetRepository} from "./repository/index.js"
+import Comment  from './models/comment.js';
+import TweetService  from './services/tweet-service.js';
 
 
 app.listen(process.env.PORT, async () => {
@@ -16,14 +13,33 @@ app.listen(process.env.PORT, async () => {
 
     await connect();
     console.log('Database connected');
+    const hashtags =  [
+        {title: 'js'},
+        {title: 'python'},
+        {title: 'javascript'},
+        {title: 'java'},
+        {title: 'c#'},
+        {title: 'cpp'},
+    ]
+    const hashNames = [
+        'js',
+        'python',
+        'javascript',
+        'java',
+        'c#',
+        'cpp',
+    ]
+    const hashtagRepository = new HashtagRepository();
+    const tag = await hashtagRepository.getAll(hashNames);
+    console.log(tag.map((tag) => tag.title));
 
     // const tweetRepository = new TweetRepository();
-    // const tweet = await tweetRepository.create({
-    //     content: 'This is a tweet',
-    //     userEmail: 'yashsoni@gmail.com',
+    // const tweetService = new TweetService();
+    // const tweet = await tweetService.create({
+    //     content: 'All Done #processing #ok #javascript #tweet #itself be a ',
     // });
-    // console.log(tweet);
 
+    // console.log(tweet);
 
 }
 );
