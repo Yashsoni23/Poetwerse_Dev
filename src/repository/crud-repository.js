@@ -48,6 +48,17 @@ class CrudRepository {
             console.log(error);
         }
     }
+
+  async delete(id) {
+    try {
+      const model = await this.model.findByIdAndDelete(id);
+      return model;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
 }
 
 export default CrudRepository;

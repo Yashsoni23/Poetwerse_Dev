@@ -3,9 +3,10 @@ import dotenv  from 'dotenv';
 import bodyParser from 'body-parser';
 dotenv.config();
 import {connect}  from './config/database.js';
-import { HashtagRepository, TweetRepository} from "./repository/index.js"
+import { HashtagRepository, TweetRepository, UserRepository} from "./repository/index.js"
 import Comment  from './models/comment.js';
 import TweetService  from './services/tweet-service.js';
+import LikeService from './services/like-service.js';
 import apiRoutes  from './routes/index.js';
 
 
@@ -51,4 +52,18 @@ app.listen(process.env.PORT, async () => {
 
     // console.log(tweet);
 
+    const userRepo = new UserRepository();
+    const tweetRepo = new TweetRepository();
+    const tweets = await tweetRepo.getAll(0, 10);
+    // const user = await userRepo.getAll();
+    // console.log(user);
+    // const user = await userRepo.create({
+    //     "name":"Rahul",
+    //     "password":"123456",
+    //     "email":"rahul@gmail.com"
+    // });
+    
+    const likeService = new LikeService();
+    const like = await likeService.toggleLike(tweets[0]._id, 'Tweet', "64748b4f30af64bd8bc4025b");
+    console.log({like:like});
 });

@@ -6,7 +6,13 @@ const tweetSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-  
+  likes:[
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like",
+    },
+
+  ]
 },{timestamps: true});
 
 // tweetSchema.pre('remove', async function(next) {

@@ -7,17 +7,17 @@ const likeSchema = new mongoose.Schema(
             required: true,
             enum: ["Tweet", "Comment"],
         },
-       likeable: {
+        likeable: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             refPath: "onModel",
-       },
-         user: {
+        },
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: "User",
-         },
-    }, 
+        },
+    },
     { timestamps: true }
 );
 
