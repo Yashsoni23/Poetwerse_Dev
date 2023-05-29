@@ -4,15 +4,9 @@ const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
-        max:[280, 'Tweet cannot be more than 280 characters']
+        unique: true,
     },
-    hashtags: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Hashtag',
-        }
-    ]
-    
+  
 },{timestamps: true});
 
 // tweetSchema.pre('remove', async function(next) {
