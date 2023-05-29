@@ -54,7 +54,7 @@ app.listen(process.env.PORT, async () => {
 
     const userRepo = new UserRepository();
     const tweetRepo = new TweetRepository();
-    const tweets = await tweetRepo.getAll(0, 10);
+    // const tweets = await tweetRepo.getAll(0, 10);
     // const user = await userRepo.getAll();
     // console.log(user);
     // const user = await userRepo.create({
@@ -63,7 +63,7 @@ app.listen(process.env.PORT, async () => {
     //     "email":"rahul@gmail.com"
     // });
     
-    const likeService = new LikeService();
-    const like = await likeService.toggleLike(tweets[0]._id, 'Tweet', "64748b4f30af64bd8bc4025b");
-    console.log({like:like});
+    // const likeService = new LikeService();
+    // const like = await likeService.toggleLike(tweets[0]._id, 'Tweet', "64748b4f30af64bd8bc4025b");
+    // console.log({like:like});
 });
